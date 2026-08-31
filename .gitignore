@@ -3,3 +3,4 @@ dist/
 repos/
 .env
 *.log
+VIDEO_SCRIPT.md
