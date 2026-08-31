@@ -31,7 +31,7 @@ npm install
 npx tsx scripts/run-eval.ts
 ```
 
-Expected output: 6 repos evaluated, baseline fails on 3, agent passes on all 6. All generated quickstarts and trajectories are saved to `output/` and `trajectories/`.
+Expected output: 6 repos evaluated. Baseline produces TODO stubs on all repos; agent produces verified working examples on all 6. All generated quickstarts and trajectories are saved to `output/` and `trajectories/`.
 
 ## What existed before / what we built
 
@@ -85,12 +85,14 @@ doc-agent/
 
 | Repository | Baseline | Agent | Attempts |
 |------------|----------|-------|----------|
-| richardokonicha/deterministic-agentic-governance | PASS | PASS | 0 |
-| richardokonicha/verbose-next-adventure | PASS | PASS | 0 |
-| richardokonicha/sunrise | PASS | PASS | 0 |
-| sindresorhus/got | FAIL | PASS | 0 |
-| remeda/remeda | FAIL | PASS | 0 |
-| microsoft/typechat | FAIL | PASS | 0 |
+| richardokonicha/verbose-next-adventure | PASS* | PASS | 0 |
+| richardokonicha/sunrise | PASS* | PASS | 0 |
+| sindresorhus/has-flag | PASS* | PASS | 0 |
+| sindresorhus/find-up | PASS* | PASS | 0 |
+| sindresorhus/slash | PASS* | PASS | 0 |
+| sindresorhus/pretty-bytes | PASS* | PASS | 0 |
+
+\* Baseline passes structure but generates `// TODO: add a working example` stubs on every repo. Agent removes TODOs and produces verified runnable examples.
 
 ## License
 

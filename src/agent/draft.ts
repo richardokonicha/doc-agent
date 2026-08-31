@@ -41,8 +41,35 @@ export async function extractSourceKnowledge(repo: { name: string; url: string; 
     }
   }
 
-  const mainFile = pkg.main || "index.ts";
-  const mainPath = path.join(targetDir, mainFile);
+  function resolveEntryPoint(pkg: any, dir: string): string | null {
+    if (pkg.main) return path.join(dir, pkg.main);
+    if (pkg.module) return path.join(dir, pkg.module);
+    if (pkg.types) return path.join(dir, pkg.types);
+    
+    if (pkg.exports) {
+      const exportsField = pkg.exports;
+      if (typeof exportsField === "string") {
+        return path.join(dir, exportsField);
+      }
+      if (typeof exportsField === "object") {
+        const conditions = ["import", "default", "types", "require"];
+        for (const condition of conditions) {
+          if (exportsField[condition]) {
+            return path.join(dir, exportsField[condition]);
+          }
+        }
+        const firstKey = Object.keys(exportsField)[0];
+        if (firstKey) {
+          return path.join(dir, exportsField[firstKey]);
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  const mainFile = resolveEntryPoint(pkg, targetDir) || path.join(targetDir, "index.ts");
+  const mainPath = mainFile;
   sourceCode = await fs.readFile(mainPath, "utf-8").catch(() => "");
 
   if (!sourceCode) {

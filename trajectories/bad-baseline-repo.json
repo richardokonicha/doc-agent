@@ -1,6 +1,6 @@
 {
   "repo": "bad-baseline-repo",
-  "timestamp": "2026-08-31T03:29:20.571Z",
+  "timestamp": "2026-08-31T10:00:16.960Z",
   "packageName": "bad-baseline-repo",
   "description": "A tiny repo that fails baseline but passes agent",
   "exportsFound": 2,

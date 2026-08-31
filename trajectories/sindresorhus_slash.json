@@ -1,0 +1,16 @@
+{
+  "repo": "sindresorhus/slash",
+  "timestamp": "2026-08-31T10:00:19.719Z",
+  "packageName": "slash",
+  "description": "Convert Windows backslash paths to slash paths",
+  "exportsFound": 1,
+  "topExports": [
+    "slash"
+  ],
+  "sourceFilesScanned": 6,
+  "sourceCodeLength": 560,
+  "selectedExport": "slash",
+  "draft": "# Quickstart\n\nConvert Windows backslash paths to slash paths\n\n## Install\n\n```bash\nnpm install slash\n```\n\n## Example\n\n```typescript\nimport { slash } from 'slash';\n\nconst result = slash(\"./workspace\");\nconsole.log(result);\n```\n\n## What This Does\n\nConvert Windows backslash paths to slash paths\n\nThe example imports the `slash` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

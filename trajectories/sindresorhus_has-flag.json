@@ -1,0 +1,16 @@
+{
+  "repo": "sindresorhus/has-flag",
+  "timestamp": "2026-08-31T10:00:19.687Z",
+  "packageName": "has-flag",
+  "description": "Check if argv has a specific flag",
+  "exportsFound": 1,
+  "topExports": [
+    "hasFlag"
+  ],
+  "sourceFilesScanned": 2,
+  "sourceCodeLength": 407,
+  "selectedExport": "hasFlag",
+  "draft": "# Quickstart\n\nCheck if argv has a specific flag\n\n## Install\n\n```bash\nnpm install has-flag\n```\n\n## Example\n\n```typescript\nimport { hasFlag } from 'has-flag';\n\nconst result = hasFlag(\"flag\", \"argv = process.argv\");\nconsole.log(result);\n```\n\n## What This Does\n\nCheck if argv has a specific flag\n\nThe example imports the `hasFlag` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

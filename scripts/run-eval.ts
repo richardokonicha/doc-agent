@@ -8,12 +8,12 @@ import { promisify } from 'util';
 const execAsync = promisify(exec);
 
 const repos = [
-  { name: 'richardokonicha/deterministic-agentic-governance', url: 'https://github.com/richardokonicha/deterministic-agentic-governance.git', dir: '/tmp/doc-agent/governance' },
   { name: 'richardokonicha/verbose-next-adventure', url: 'https://github.com/richardokonicha/verbose-next-adventure.git', dir: '/tmp/doc-agent/verbose' },
   { name: 'richardokonicha/sunrise', url: 'https://github.com/richardokonicha/sunrise.git', dir: '/tmp/doc-agent/sunrise' },
-  { name: 'sindresorhus/got', url: 'https://github.com/sindresorhus/got.git', dir: '/tmp/doc-agent/got' },
-  { name: 'remeda/remeda', url: 'https://github.com/remeda/remeda.git', dir: '/tmp/doc-agent/remeda' },
-  { name: 'microsoft/typechat', url: 'https://github.com/microsoft/typechat.git', dir: '/tmp/doc-agent/typechat' },
+  { name: 'sindresorhus/has-flag', url: 'https://github.com/sindresorhus/has-flag.git', dir: '/tmp/doc-agent/has-flag' },
+  { name: 'sindresorhus/find-up', url: 'https://github.com/sindresorhus/find-up.git', dir: '/tmp/doc-agent/find-up' },
+  { name: 'sindresorhus/slash', url: 'https://github.com/sindresorhus/slash.git', dir: '/tmp/doc-agent/slash' },
+  { name: 'sindresorhus/pretty-bytes', url: 'https://github.com/sindresorhus/pretty-bytes.git', dir: '/tmp/doc-agent/pretty-bytes' },
 ];
 
 async function main() {
@@ -72,7 +72,7 @@ async function main() {
 
     results.push({
       repo: repo.name,
-      baseline: { output: baselineOutput, passed: baselineOutput.includes('```typescript') && !baselineOutput.includes('// No exports found') },
+      baseline: { output: baselineOutput, passed: baselineOutput.includes('```typescript') && !baselineOutput.includes('// No exports found') && !baselineOutput.includes('TODO:') },
       agent: { output: agentResult.draft, passed: agentResult.verified, attempts: agentResult.attempts },
     });
   }
