@@ -1,7 +1,7 @@
 {
   "name": "doc-agent",
   "version": "1.0.0",
-  "description": "Agentic quickstart generator for TypeScript/JavaScript libraries — micro1 Frontier Engineering Challenge 2026",
+  "description": "Agentic quickstart generator for TypeScript/JavaScript libraries \u2014 micro1 Frontier Engineering Challenge 2026",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
