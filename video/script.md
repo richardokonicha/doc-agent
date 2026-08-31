@@ -14,10 +14,10 @@
    ```
 3. Show output file:
    ```bash
-   cat output/baseline/sindresorhus_has-flag-QUICKSTART.md
+   cat output/baseline/has-flag-QUICKSTART.md
    ```
 4. Point out: `// TODO: add a working example` — baseline generates a placeholder, not a real example.
-5. Run full baseline eval:
+5. Run full eval to see baseline across all repos:
    ```bash
    npx tsx scripts/run-eval.ts
    ```
