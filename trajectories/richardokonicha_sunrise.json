@@ -1,0 +1,25 @@
+{
+  "repo": "richardokonicha/sunrise",
+  "timestamp": "2026-08-31T03:16:10.302Z",
+  "packageName": "sunrise",
+  "description": "",
+  "exportsFound": 47,
+  "topExports": [
+    "LoginFormSchema",
+    "LoginFormState",
+    "redirectToIdentityProvider",
+    "ListVolumesOptions",
+    "VolumeImageMetadata",
+    "Volume",
+    "listVolumes",
+    "getRelativeTimeString",
+    "Image",
+    "listImages"
+  ],
+  "sourceFilesScanned": 165,
+  "sourceCodeLength": 63106,
+  "selectedExport": "LoginFormSchema",
+  "draft": "# Quickstart\n\nA TypeScript/JavaScript library\n\n## Install\n\n```bash\nnpm install sunrise\n```\n\n## Example\n\n```typescript\nimport { SunriseSession } from 'sunrise';\n\n// Use SunriseSession as a type\nconst value: SunriseSession = {} as any;\nconsole.log(value);\n```\n\n## What This Does\n\nThis example demonstrates how to use the main export from sunrise.\n\nThe example imports the `LoginFormSchema` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

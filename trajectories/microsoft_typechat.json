@@ -1,0 +1,14 @@
+{
+  "repo": "microsoft/typechat",
+  "timestamp": "2026-08-31T03:16:14.831Z",
+  "packageName": "microsoft/typechat",
+  "description": "",
+  "exportsFound": 0,
+  "topExports": [],
+  "sourceFilesScanned": 1,
+  "sourceCodeLength": 0,
+  "selectedExport": "none",
+  "draft": "# Quickstart\n\nA TypeScript/JavaScript library\n\n## Install\n\n```bash\nnpm install microsoft/typechat\n```\n\n## Example\n\n```typescript\n// No exports found - check package.json for usage\n```\n\n## What This Does\n\nThis example demonstrates how to use the main export from microsoft/typechat.\n\nThe example imports the `default` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

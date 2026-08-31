@@ -1,0 +1,5 @@
+{
+  "name": "bad-baseline-repo",
+  "version": "1.0.0",
+  "description": "A tiny repo that fails baseline but passes agent"
+}

@@ -1,0 +1,25 @@
+{
+  "repo": "richardokonicha/deterministic-agentic-governance",
+  "timestamp": "2026-08-31T03:16:10.242Z",
+  "packageName": "@deterministic-agentic/governance",
+  "description": "Deterministic Agentic Governance Framework for Autonomous Software Engineering",
+  "exportsFound": 73,
+  "topExports": [
+    "AgentAdapter",
+    "ClaudeCodeAdapter",
+    "AiderAdapter",
+    "OpenCodeAdapter",
+    "KiloCodeAdapter",
+    "CustomAgentAdapter",
+    "createAgentAdapter",
+    "CLIOptions",
+    "CLI",
+    "runCLI"
+  ],
+  "sourceFilesScanned": 245,
+  "sourceCodeLength": 55449,
+  "selectedExport": "AgentAdapter",
+  "draft": "# Quickstart\n\nDeterministic Agentic Governance Framework for Autonomous Software Engineering\n\n## Install\n\n```bash\nnpm install @deterministic-agentic/governance\n```\n\n## Example\n\n```typescript\nimport { createGovernanceConfig } from '@deterministic-agentic/governance';\n\nconst instance = await createGovernanceConfig(\"./workspace\", \"my-project\");\nconsole.log(instance);\n```\n\n## What This Does\n\nDeterministic Agentic Governance Framework for Autonomous Software Engineering\n\nThe example imports the `AgentAdapter` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

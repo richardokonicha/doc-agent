@@ -1,0 +1,17 @@
+{
+  "repo": "bad-baseline-repo",
+  "timestamp": "2026-08-31T03:29:20.571Z",
+  "packageName": "bad-baseline-repo",
+  "description": "A tiny repo that fails baseline but passes agent",
+  "exportsFound": 2,
+  "topExports": [
+    "createFixture",
+    "formatOutput"
+  ],
+  "sourceFilesScanned": 2,
+  "sourceCodeLength": 203,
+  "selectedExport": "createFixture",
+  "draft": "# Quickstart\n\nA tiny repo that fails baseline but passes agent\n\n## Install\n\n```bash\nnpm install bad-baseline-repo\n```\n\n## Example\n\n```typescript\nimport { createFixture } from 'bad-baseline-repo';\n\nconst instance = await createFixture(\"my-project\", \"count\");\nconsole.log(instance);\n```\n\n## What This Does\n\nA tiny repo that fails baseline but passes agent\n\nThe example imports the `createFixture` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

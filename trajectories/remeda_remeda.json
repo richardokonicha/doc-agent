@@ -1,0 +1,25 @@
+{
+  "repo": "remeda/remeda",
+  "timestamp": "2026-08-31T03:16:10.748Z",
+  "packageName": "remeda",
+  "description": "A utility library for JavaScript and Typescript.",
+  "exportsFound": 609,
+  "topExports": [
+    "add",
+    "add",
+    "add",
+    "add",
+    "add",
+    "addProp",
+    "addProp",
+    "addProp",
+    "allPass",
+    "allPass"
+  ],
+  "sourceFilesScanned": 7912,
+  "sourceCodeLength": 1642870,
+  "selectedExport": "add",
+  "draft": "# Quickstart\n\nA utility library for JavaScript and Typescript.\n\n## Install\n\n```bash\nnpm install remeda\n```\n\n## Example\n\n```typescript\nimport { add } from 'remeda';\n\nconst result = add(\"value\", \"addend\");\nconsole.log(result);\n```\n\n## What This Does\n\nA utility library for JavaScript and Typescript.\n\nThe example imports the `add` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "verified": true,
+  "attempts": 0
+}

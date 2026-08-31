@@ -1,0 +1,30 @@
+{
+  "name": "doc-agent",
+  "version": "1.0.0",
+  "description": "Agentic quickstart generator for TypeScript/JavaScript libraries — micro1 Frontier Engineering Challenge 2026",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "baseline": "tsx src/baseline/index.ts",
+    "agent": "tsx src/agent/index.ts",
+    "eval": "tsx scripts/run-eval.ts",
+    "run": "tsx scripts/run.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0",
+    "tsx": "^4.0",
+    "typescript": "^5.0"
+  },
+  "engines": {
+    "node": ">=20.0"
+  }
+}
