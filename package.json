@@ -1,12 +1,12 @@
 {
   "name": "doc-agent",
   "version": "1.0.0",
-  "description": "Agentic quickstart generator for TypeScript/JavaScript libraries — micro1 Frontier Engineering Challenge 2026",
+  "description": "Agentic quickstart generator for TypeScript/JavaScript libraries \u2014 micro1 Frontier Engineering Challenge 2026",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "node api.js && tsc",
+    "start": "node api.js && node dist/index.js",
     "baseline": "tsx src/baseline/index.ts",
     "agent": "tsx src/agent/index.ts",
     "eval": "tsx scripts/run-eval.ts",
