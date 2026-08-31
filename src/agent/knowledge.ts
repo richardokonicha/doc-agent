@@ -5,6 +5,7 @@ export interface RepoKnowledge {
   packageManager: string;
   publicExports: string[];
   testFiles: string[];
+  isApp: boolean;
 }
 
 export function buildInitialKnowledge(repo: { name: string; url: string; dir: string }): RepoKnowledge {
@@ -15,5 +16,6 @@ export function buildInitialKnowledge(repo: { name: string; url: string; dir: st
     packageManager: "npm",
     publicExports: [],
     testFiles: [],
+    isApp: false,
   };
 }

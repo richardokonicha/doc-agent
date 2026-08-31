@@ -2,23 +2,27 @@
 
 A TypeScript/JavaScript library
 
+## Prerequisites
+
+- Node.js >= 18
+- npm (or your preferred package manager)
+
 ## Install
 
 ```bash
-npm install verbose-flush
+npm install
 ```
 
-## Example
+## Run
 
-```typescript
-import { PageLayout } from 'verbose-flush';
-
-const result = PageLayout("props");
-console.log(result);
+```bash
+npm run dev
 ```
 
-## What This Does
+Open http://localhost:3000 in your browser.
 
-This example demonstrates how to use the main export from verbose-flush.
+## Build
 
-The example imports the `PageLayout` export and demonstrates basic usage. Check the source code and tests for more advanced examples.
+```bash
+npm run build
+```

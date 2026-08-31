@@ -1,98 +1,69 @@
-# doc-agent
+# doc-agent — Agentic Quickstart Generator
 
-Agentic quickstart generator for TypeScript/JavaScript libraries.
+Agentic technical documentation generator for TypeScript/JavaScript repos.
+Generates a verified `QUICKSTART.md` from source code, tests, and README.
 
-## Who has this problem?
+## Repos
 
-A developer evaluating a new TS/JS library for a project. They open the README, copy the install command, and then spend 1–3 hours trial-and-erroring imports, setup, and API usage before their first successful run. READMEs are often stale, vague, or missing runnable examples entirely.
+| Repo | Type | Result |
+|------|------|--------|
+| `richardokonicha/verbose-next-adventure` | Next.js app | PASS (0 attempts) |
+| `richardokonicha/sunrise` | Next.js app | PASS (0 attempts) |
+| `sindresorhus/has-flag` | Library | PASS (0 attempts) |
+| `sindresorhus/find-up` | Library | PASS (0 attempts) |
+| `sindresorhus/slash` | Library | PASS (0 attempts) |
+| `sindresorhus/pretty-bytes` | Library | PASS (0 attempts) |
 
-## What bottleneck makes it worth solving?
+## Prerequisites
 
-The bottleneck is **context discovery**: a newcomer has to read source code, tests, and type definitions to understand the actual public API. Static extraction produces plausible but broken examples. An agent can read the real source, identify the correct entry point, draft a runnable example, verify it through multiple signals, and revise based on actual errors. This loop is impossible for a deterministic script.
+- Node.js >= 20
+- npm
 
-## Does the agent solve it well?
-
-Yes. The agent follows a deterministic agentic governance loop:
-
-1. **Extract** — scans `package.json`, README, and source files across `src/`, `lib/`, `app/`, `components/`, `source/`, and workspace `packages/`.
-2. **Score** — ranks exports by name heuristics, package-name match, and signature availability to pick the real public API.
-3. **Draft** — generates a parameter-aware TypeScript example using actual function signatures.
-4. **Verify** — checks that the example imports the correct package, contains no TODO/FIXME placeholders, and passes basic quality gates.
-5. **Commit or rollback** — if all gates pass, the quickstart is saved. If verification fails after 3 attempts, the agent rolls back to the baseline draft.
-
-## Can another person reproduce the result?
-
-Yes. From a clean environment:
+## Install
 
 ```bash
-git clone <repo-url>
 cd doc-agent
 npm install
-npx tsx scripts/run-eval.ts
 ```
 
-Expected output: 6 repos evaluated. Baseline produces TODO stubs on all repos; agent produces verified working examples on all 6. All generated quickstarts and trajectories are saved to `output/` and `trajectories/`.
+## Run
 
-## What existed before / what we built
+Run baseline and agent on all 6 repos:
 
-**Pre-existing scaffold:** repo structure, baseline generator, eval harness, and initial LangGraph/LangChain/E2B experiment files were scaffolded before the hackathon.
-
-**What we built during the hackathon:**
-- Package-aware source extraction that handles monorepos, workspaces, and non-standard source directories (`source/`, `packages/`)
-- Export scoring heuristics that pick the real public API from dozens of candidates
-- Parameter-aware example generation from actual function signatures
-- Deterministic agentic governance modules: orchestrator, sandbox, verification gates, ledger, rollback
-- 6-repo evaluation with verified pass/fail results
-
-**What we removed:** LangGraph/LangSmith/E2B runtime paths. The final agent is deterministic, offline, and $0 to run.
-
-## Stack
-
-- **Language**: TypeScript (Node.js 20+)
-- **Agent runtime**: Deterministic extraction + scoring (no external API required)
-- **Eval**: Custom harness with verification gates
-- **Trajectories**: JSON ledger per repo in `trajectories/`
-
-## Project Structure
-
-```
-doc-agent/
-├── src/
-│   ├── baseline/           # Static quickstart generator
-│   ├── agent/
-│   │   ├── orchestrator.ts # Governance loop
-│   │   ├── sandbox.ts      # Restricted execution
-│   │   ├── verification.ts # Quality gates
-│   │   ├── ledger.ts       # State persistence + rollback
-│   │   ├── draft.ts        # Source extraction + generation
-│   │   ├── loop.ts         # Thin wrapper
-│   │   ├── index.ts        # Entry point
-│   │   └── knowledge.ts    # Repo knowledge model
-├── scripts/
-│   ├── run-eval.ts         # Eval across 6 repos
-│   └── run.ts              # Single-repo runner
-├── trajectories/           # Agent execution traces
-├── output/
-│   ├── baseline/           # Baseline quickstarts
-│   └── agent/              # Agent-generated quickstarts
-├── package.json
-├── tsconfig.json
-└── README.md
+```bash
+npm run eval
 ```
 
-## Results
+This clones repos into `/tmp/doc-agent/`, runs baseline, runs agent, and writes outputs to `doc-agent/output/`.
 
-| Repository | Baseline | Agent | Attempts |
-|------------|----------|-------|----------|
-| richardokonicha/verbose-next-adventure | PASS* | PASS | 0 |
-| richardokonicha/sunrise | PASS* | PASS | 0 |
-| sindresorhus/has-flag | PASS* | PASS | 0 |
-| sindresorhus/find-up | PASS* | PASS | 0 |
-| sindresorhus/slash | PASS* | PASS | 0 |
-| sindresorhus/pretty-bytes | PASS* | PASS | 0 |
+Run on a single local repo:
 
-\* Baseline passes structure but generates `// TODO: add a working example` stubs on every repo. Agent removes TODOs and produces verified runnable examples.
+```bash
+npx tsx scripts/run.ts /path/to/repo
+```
 
-## License
+## Test
 
-MIT
+```bash
+npm test
+```
+
+## Outputs
+
+- `doc-agent/output/baseline/` — baseline quickstarts
+- `doc-agent/output/agent/` — agent-generated quickstarts
+- `doc-agent/trajectories/` — JSON trajectory files
+
+## How It Works
+
+1. **Extract** — reads `package.json`, source files, and tests to build `RepoKnowledge`
+2. **Score exports** — deterministic scoring picks the most useful public export
+3. **Draft** — generates `QUICKSTART.md` with install, example, and explanation
+4. **Verify** — checks import presence, TypeScript compilation, lint, and runtime execution
+5. **Revise** — re-generates draft if verification fails (up to 3 attempts)
+
+For app repos (Next.js, Vite + React), the agent detects the framework and generates an app quickstart with `npm run dev` instead of a code example.
+
+## Key Insight
+
+Static extraction produces plausible but broken examples. The agentic loop (draft → verify → revise) catches errors that a one-shot generator cannot.

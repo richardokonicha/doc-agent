@@ -5,6 +5,10 @@ import { RepoKnowledge, buildInitialKnowledge } from "./knowledge";
 import { verifyDraft, allPassed } from "./verification";
 import { saveLedger, rollbackToBaseline, type GovernanceState } from "./ledger";
 import { generateDraftFromKnowledge, extractSourceKnowledge } from "./draft";
+import { exec } from "child_process";
+import { promisify } from "util";
+
+const execAsync = promisify(exec);
 
 export interface AgentResult {
   draft: string;
@@ -37,9 +41,21 @@ export async function runAgentForRepo(repo: { name: string; url: string; dir: st
 
   while (!verified && attempts < maxAttempts) {
     console.log(`[orchestrator] Verification attempt ${attempts + 1}/${maxAttempts}`);
-    const results = await verifyDraft(draft, repo.dir);
+    const results = await verifyDraft(draft, repo.dir, knowledge.isApp);
 
     if (allPassed(results)) {
+      if (!knowledge.isApp) {
+        const runtimeOk = await verifyRuntime(draft, repo.dir);
+        if (!runtimeOk) {
+          const errors = "Runtime verification failed";
+          console.log(`[orchestrator] Verification failed:\n${errors}`);
+          attempts++;
+          if (attempts < maxAttempts) {
+            draft = generateDraftFromKnowledge(repo.name, knowledge, sourceCode, readmeContent);
+          }
+          continue;
+        }
+      }
       verified = true;
       console.log(`[orchestrator] All verification gates passed`);
       break;
@@ -92,4 +108,27 @@ export async function runAgentForRepo(repo: { name: string; url: string; dir: st
 
   console.log(`[orchestrator] Governance loop complete: verified=${verified}, attempts=${attempts}`);
   return { draft, attempts, verified, knowledge };
+}
+
+async function verifyRuntime(draft: string, repoDir: string): Promise<boolean> {
+  const codeMatch = draft.match(/```typescript\n([\s\S]*?)```/);
+  if (!codeMatch) return false;
+
+  const nodeModulesExists = await fs.access(path.join(repoDir, "node_modules")).then(() => true).catch(() => false);
+  if (!nodeModulesExists) {
+    return true;
+  }
+
+  const tempFile = path.join(repoDir, "temp-quickstart-example.ts");
+  await fs.writeFile(tempFile, codeMatch[1]);
+
+  try {
+    await execAsync(`npx tsx ${path.basename(tempFile)}`, { cwd: repoDir, timeout: 10000 });
+    return true;
+  } catch (e: any) {
+    console.log(`[orchestrator] Runtime verification failed: ${e.message}`);
+    return false;
+  } finally {
+    fs.unlink(tempFile).catch(() => {});
+  }
 }

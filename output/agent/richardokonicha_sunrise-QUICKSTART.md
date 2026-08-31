@@ -2,24 +2,27 @@
 
 A TypeScript/JavaScript library
 
+## Prerequisites
+
+- Node.js >= 18
+- npm (or your preferred package manager)
+
 ## Install
 
 ```bash
-npm install sunrise
+npm install
 ```
 
-## Example
+## Run
 
-```typescript
-import { SunriseSession } from 'sunrise';
-
-// Use SunriseSession as a type
-const value: SunriseSession = {} as any;
-console.log(value);
+```bash
+npm run dev
 ```
 
-## What This Does
+Open http://localhost:3000 in your browser.
 
-This example demonstrates how to use the main export from sunrise.
+## Build
 
-The example imports the `LoginFormSchema` export and demonstrates basic usage. Check the source code and tests for more advanced examples.
+```bash
+npm run build
+```

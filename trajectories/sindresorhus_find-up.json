@@ -1,6 +1,6 @@
 {
   "repo": "sindresorhus/find-up",
-  "timestamp": "2026-08-31T10:43:53.953Z",
+  "timestamp": "2026-08-31T12:57:45.235Z",
   "packageName": "find-up",
   "description": "Find a file or directory by walking up parent directories",
   "exportsFound": 7,
@@ -16,7 +16,7 @@
   "sourceFilesScanned": 50,
   "sourceCodeLength": 6429,
   "selectedExport": "findUpStop",
-  "draft": "# Quickstart\n\nFind a file or directory by walking up parent directories\n\n## Install\n\n```bash\nnpm install find-up\n```\n\n## Example\n\n```typescript\nimport { findUpStop } from 'find-up';\n\nconsole.log(findUpStop);\n```\n\n## What This Does\n\nFind a file or directory by walking up parent directories\n\nThe example imports the `findUpStop` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "draft": "# Quickstart\n\nFind a file or directory by walking up parent directories\n\n## Install\n\n```bash\nnpm install find-up\n```\n\n## Example\n\n```typescript\nimport { findUpMultiple } from 'find-up';\n\nconst result = await findUpMultiple(\"my-project\", {});\nconsole.log(result);\n```\n\n## What This Does\n\nFind a file or directory by walking up parent directories\n\nThe example imports the `findUpMultiple` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
   "verified": true,
   "attempts": 0
 }

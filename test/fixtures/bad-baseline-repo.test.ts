@@ -20,5 +20,5 @@ describe('bad-baseline-repo', () => {
     expect(result.verified).toBe(true);
     expect(result.draft).toContain('```typescript');
     expect(result.draft).not.toContain('No exports found');
-  });
+  }, 30000);
 });

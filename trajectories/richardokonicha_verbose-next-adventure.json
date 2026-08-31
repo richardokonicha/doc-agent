@@ -1,6 +1,6 @@
 {
   "repo": "richardokonicha/verbose-next-adventure",
-  "timestamp": "2026-08-31T10:43:53.915Z",
+  "timestamp": "2026-08-31T12:57:45.164Z",
   "packageName": "verbose-flush",
   "description": "",
   "exportsFound": 28,
@@ -19,7 +19,7 @@
   "sourceFilesScanned": 121,
   "sourceCodeLength": 25301,
   "selectedExport": "PageLayout",
-  "draft": "# Quickstart\n\nA TypeScript/JavaScript library\n\n## Install\n\n```bash\nnpm install verbose-flush\n```\n\n## Example\n\n```typescript\nimport { PageLayout } from 'verbose-flush';\n\nconst result = PageLayout(\"props\");\nconsole.log(result);\n```\n\n## What This Does\n\nThis example demonstrates how to use the main export from verbose-flush.\n\nThe example imports the `PageLayout` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "draft": "# Quickstart\n\nA TypeScript/JavaScript library\n\n## Prerequisites\n\n- Node.js >= 18\n- npm (or your preferred package manager)\n\n## Install\n\n```bash\nnpm install\n```\n\n## Run\n\n```bash\nnpm run dev\n```\n\nOpen http://localhost:3000 in your browser.\n\n## Build\n\n```bash\nnpm run build\n```\n",
   "verified": true,
   "attempts": 0
 }

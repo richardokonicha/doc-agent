@@ -21,6 +21,13 @@ export async function extractSourceKnowledge(repo: { name: string; url: string; 
   knowledge.buildScript = pkg.scripts?.build || "npm run build";
   knowledge.packageManager = pkg.packageManager?.split("@")[0] || "npm";
 
+  const hasNext = pkg.dependencies?.next || pkg.devDependencies?.next;
+  const hasAppDir = (await fs.access(path.join(repo.dir, "app")).then(() => true).catch(() => false)) ||
+                    (await fs.access(path.join(repo.dir, "pages")).then(() => true).catch(() => false));
+  const hasVite = pkg.dependencies?.vite || pkg.devDependencies?.vite;
+  const hasReactApp = pkg.dependencies?.react || pkg.devDependencies?.react;
+  knowledge.isApp = Boolean((hasNext && hasAppDir) || (hasVite && hasReactApp) || pkg.private === true && hasReactApp);
+
   readmeContent = await fs.readFile(path.join(repo.dir, "README.md"), "utf-8").catch(() => "");
 
   let targetDir = repo.dir;
@@ -154,6 +161,41 @@ export async function extractSourceKnowledge(repo: { name: string; url: string; 
 export function generateDraftFromKnowledge(repoName: string, knowledge: RepoKnowledge, sourceCode: string, readme: string): string {
   const description = knowledge.description || "A TypeScript/JavaScript library";
   const packageName = knowledge.packageName || repoName;
+
+  if (knowledge.isApp) {
+    const devScript = knowledge.buildScript || "npm run dev";
+    const buildScript = knowledge.buildScript || "npm run build";
+    return `# Quickstart
+
+${description}
+
+## Prerequisites
+
+- Node.js >= 18
+- npm (or your preferred package manager)
+
+## Install
+
+\`\`\`bash
+${knowledge.packageManager} install
+\`\`\`
+
+## Run
+
+\`\`\`bash
+npm run dev
+\`\`\`
+
+Open http://localhost:3000 in your browser.
+
+## Build
+
+\`\`\`bash
+npm run build
+\`\`\`
+`;
+  }
+
   const exports = knowledge.publicExports;
 
   let mainExport = exports[0] || "default";
@@ -166,16 +208,25 @@ export function generateDraftFromKnowledge(repoName: string, knowledge: RepoKnow
       const pkgLower = packageName.toLowerCase().replace(/^@[^/]+\//, "");
 
       if (lower.includes(pkgLower)) score += 10;
-      if (/^(create|init|new|build|make|get|run|start|with)/.test(exp)) score += 5;
+      if (/^(create|init|new|build|make|get|run|start|with|format|parse|convert|compute)/.test(exp)) score += 5;
       if (exp.length < 15) score += 2;
       if (lower.includes("adapter") || lower.includes("manager") || lower.includes("context")) score -= 3;
+      if (lower.includes("stop") || lower.includes("symbol") || lower.includes("internal")) score -= 10;
+      if (lower.endsWith("sync") && !lower.includes("async")) score += 1;
       score += Math.max(0, 10 - exports.indexOf(exp));
+
+      const funcPattern = new RegExp(String.raw`export\s+(?:default\s+)?(?:async\s+)?function\s+${exp}(?:\s*<[^>]*>)?\s*\(`, "i");
+      const constPattern = new RegExp(String.raw`export\s+(?:const|let|var)\s+${exp}\s*=\s*(?:async\s*)?\(`, "i");
+      if (funcPattern.test(sourceCode) || constPattern.test(sourceCode)) {
+        score += 8;
+      }
 
       return { export: exp, score };
     });
 
     scoredExports.sort((a, b) => b.score - a.score);
     const exportName = scoredExports[0]?.export || exports[0];
+    mainExport = exportName;
 
     const funcMatch = sourceCode.match(new RegExp(String.raw`export\s+(?:default\s+)?(?:async\s+)?function\s+${exportName}(?:\s*<[^>]*>)?\s*\(([^)]*)\)`, "i"));
     const classMatch = sourceCode.match(new RegExp(String.raw`export\s+(?:default\s+)?class\s+${exportName}(?::\s*\w+)?\s*\{`, "i"));

@@ -1,6 +1,6 @@
 {
   "repo": "richardokonicha/sunrise",
-  "timestamp": "2026-08-31T10:43:53.938Z",
+  "timestamp": "2026-08-31T12:57:45.204Z",
   "packageName": "sunrise",
   "description": "",
   "exportsFound": 47,
@@ -19,7 +19,7 @@
   "sourceFilesScanned": 165,
   "sourceCodeLength": 63106,
   "selectedExport": "LoginFormSchema",
-  "draft": "# Quickstart\n\nA TypeScript/JavaScript library\n\n## Install\n\n```bash\nnpm install sunrise\n```\n\n## Example\n\n```typescript\nimport { SunriseSession } from 'sunrise';\n\n// Use SunriseSession as a type\nconst value: SunriseSession = {} as any;\nconsole.log(value);\n```\n\n## What This Does\n\nThis example demonstrates how to use the main export from sunrise.\n\nThe example imports the `LoginFormSchema` export and demonstrates basic usage. Check the source code and tests for more advanced examples.",
+  "draft": "# Quickstart\n\nA TypeScript/JavaScript library\n\n## Prerequisites\n\n- Node.js >= 18\n- npm (or your preferred package manager)\n\n## Install\n\n```bash\nnpm install\n```\n\n## Run\n\n```bash\nnpm run dev\n```\n\nOpen http://localhost:3000 in your browser.\n\n## Build\n\n```bash\nnpm run build\n```\n",
   "verified": true,
   "attempts": 0
 }
