@@ -6,7 +6,6 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "tsx src/index.ts",
     "baseline": "tsx src/baseline/index.ts",
     "agent": "tsx src/agent/index.ts",
     "eval": "tsx scripts/run-eval.ts",

@@ -25,9 +25,9 @@
 **What we tried:** Score exports by name heuristics (`create`, `init`, `get`, package-name match), parse function signatures, and generate example arguments from parameter names.
 
 **Evidence:** 
-- `richardokonicha/deterministic-agentic-governance` has 73 exports. Without scoring, the agent picks `AgentAdapter` (internal). With scoring, it picks `createGovernanceConfig`.
-- Arrow-function exports like `got`'s `create` are now detected via `const create = (...)` patterns.
-- Generic type parameters like `createGovernanceConfig<T>` no longer break the signature regex.
+- `richardokonicha/sunrise` has many exports. Baseline picks the first one; agent scores and picks `LoginFormSchema`.
+- `sindresorhus/find-up` exports multiple overloads. Without scoring, the agent might pick a non-ideal one. With scoring, it picks `findUp`.
+- Arrow-function exports like `sindresorhus/slash`'s default export are now detected via `export default function` patterns.
 
 **Decision:** Kept. Examples went from "imports a random export" to "imports the actual public API with sensible arguments."
 

@@ -68,10 +68,9 @@ doc-agent/
 │   │   ├── loop.ts         # Thin wrapper
 │   │   ├── index.ts        # Entry point
 │   │   └── knowledge.ts    # Repo knowledge model
-│   ├── eval/               # Evaluation harness
-│   └── index.ts            # Main entry
 ├── scripts/
-│   └── run-eval.ts         # Eval across 6 repos
+│   ├── run-eval.ts         # Eval across 6 repos
+│   └── run.ts              # Single-repo runner
 ├── trajectories/           # Agent execution traces
 ├── output/
 │   ├── baseline/           # Baseline quickstarts

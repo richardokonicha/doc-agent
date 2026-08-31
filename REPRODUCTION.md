@@ -43,25 +43,37 @@ npx tsx src/agent/index.ts
 The eval script produces a comparison table:
 
 ```
-=== richardokonicha/deterministic-agentic-governance ===
+=== richardokonicha/verbose-next-adventure ===
 Baseline done
 Agent done: verified=true, attempts=0
 
-=== sindresorhus/got ===
+=== richardokonicha/sunrise ===
 Baseline done
 Agent done: verified=true, attempts=0
 
-=== microsoft/typechat ===
+=== sindresorhus/has-flag ===
+Baseline done
+Agent done: verified=true, attempts=0
+
+=== sindresorhus/find-up ===
+Baseline done
+Agent done: verified=true, attempts=0
+
+=== sindresorhus/slash ===
+Baseline done
+Agent done: verified=true, attempts=0
+
+=== sindresorhus/pretty-bytes ===
 Baseline done
 Agent done: verified=true, attempts=0
 
 === Summary ===
-richardokonicha/deterministic-agentic-governance: baseline=PASS, agent=PASS (0 attempts)
-richardokonicha/verbose-next-adventure: baseline=PASS, agent=PASS (0 attempts)
-richardokonicha/sunrise: baseline=PASS, agent=PASS (0 attempts)
-sindresorhus/got: baseline=FAIL, agent=PASS (0 attempts)
-remeda/remeda: baseline=FAIL, agent=PASS (0 attempts)
-microsoft/typechat: baseline=FAIL, agent=PASS (0 attempts)
+richardokonicha/verbose-next-adventure: baseline=FAIL, agent=PASS (0 attempts)
+richardokonicha/sunrise: baseline=FAIL, agent=PASS (0 attempts)
+sindresorhus/has-flag: baseline=FAIL, agent=PASS (0 attempts)
+sindresorhus/find-up: baseline=FAIL, agent=PASS (0 attempts)
+sindresorhus/slash: baseline=FAIL, agent=PASS (0 attempts)
+sindresorhus/pretty-bytes: baseline=FAIL, agent=PASS (0 attempts)
 ```
 
 Output files are saved in:
