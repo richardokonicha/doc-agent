@@ -1,6 +1,6 @@
 {
   "repo": "sindresorhus/pretty-bytes",
-  "timestamp": "2026-08-31T10:00:19.728Z",
+  "timestamp": "2026-08-31T10:23:18.004Z",
   "packageName": "pretty-bytes",
   "description": "Convert bytes to a human readable string: 1337 → 1.34 kB",
   "exportsFound": 1,
