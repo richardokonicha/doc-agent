@@ -5,19 +5,20 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "node init && tsc",
+    "start": "node init && node dist/index.js",
     "baseline": "tsx src/baseline/index.ts",
     "agent": "tsx src/agent/index.ts",
     "eval": "tsx scripts/run-eval.ts",
-    "run": "tsx scripts/run.ts",
+    "run": "node init && tsx scripts/run.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^17.4.2"
+    "dotenv": "^17.4.2",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@types/node": "^22.0",
